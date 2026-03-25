@@ -1,0 +1,10 @@
+Câu 1:
+ - Khi người dùng chọn Cancel, hàm showConfirmDialog sẽ trả về: JOptionPane.CANCEL_OPTION (Tương ứng giá trị 2)
+ -> Chương trình sẽ đi vào nhánh: else if (option == JOptionPane.CANCEL_OPTION) và hiển thị thông báo tương ứng
+
+ Câu 2:
+ - Để tùy chỉnh nhãn trên các nút bấm -> sử dụng phương thức showOptionDialog. Phương thức này cho phép truyền vào một mảng các chuỗi để làm tên nút.
+ - Code ví dụ: Vidu61.java
+ -> showOptionDialog cho phép:
+    + Tự đặt tên nút
+    + Không bị giới hạn Yes/NO
