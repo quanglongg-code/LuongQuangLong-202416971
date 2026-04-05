@@ -1,0 +1,28 @@
+Câu 1: Khi nào nên sử dụng các phương thức truy cập (getter/setter)?
+
+Các phương thức truy cập (getter/setter) được sử dụng khi chúng ta muốn kiểm soát việc truy cập vào dữ liệu bên trong của một đối tượng, đồng thời vẫn đảm bảo tính đóng gói (encapsulation).
+
+Chúng hữu ích trong các trường hợp:
+- Khi muốn bảo vệ các thuộc tính (khai báo private) khỏi việc truy cập trực tiếp từ bên ngoài.
+- Khi cần kiểm tra hoặc ràng buộc dữ liệu trước khi gán (ví dụ: kiểm tra giá trị hợp lệ trong setter).
+- Khi có thể thay đổi cách lưu trữ dữ liệu bên trong nhưng không làm ảnh hưởng đến giao diện bên ngoài.
+- Khi chỉ muốn cho phép đọc dữ liệu (chỉ dùng getter, không có setter).
+
+Tuy nhiên, theo một số quan điểm (ví dụ: “Why getter and setter methods are evil”), việc lạm dụng getter/setter có thể làm mất đi tính đóng gói vì làm lộ dữ liệu nội bộ. Vì vậy, chỉ nên sử dụng khi thực sự cần thiết.
+
+Câu 2: Nếu tạo một constructor để khởi tạo DVD theo title và một constructor khác theo category, Java có cho phép không?
+
+Không, Java không cho phép tạo hai constructor nếu chúng chỉ nhận một tham số có cùng kiểu dữ liệu.
+
+Giải thích: Trong Java, việc nạp chồng (overloading) các phương thức, bao gồm constructor, được xác định dựa trên chữ ký phương thức (method signature), bao gồm số lượng, kiểu dữ liệu và thứ tự các tham số (không bao gồm tên tham số).
+
+Trong trường hợp này, cả hai constructor:
+- DigitalVideoDisc(String title)
+- DigitalVideoDisc(String category)
+
+đều có cùng chữ ký là DigitalVideoDisc(String). Do đó, trình biên dịch không thể phân biệt được khi gọi:
+new DigitalVideoDisc("Animation")
+
+và sẽ dẫn đến lỗi biên dịch (compile-time error).
+
+Vì vậy, để hợp lệ, các constructor cần khác nhau về số lượng hoặc kiểu dữ liệu của tham số.
