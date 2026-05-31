@@ -1,0 +1,23 @@
+1.
+Method overloading là tính năng trong Java cho phép một lớp có nhiều phương thức cùng tên nhưng khác nhau về danh sách tham số (khác số lượng, kiểu dữ liệu hoặc thứ tự tham số)
+Tính năng này giúp chương trình dễ đọc hơn và tăng khả năng tái sử dụng mã
+2.
+Biến static (biến lớp) thuộc về lớp, được chia sẻ chung cho tất cả các đối tượng của lớp đó
+Biến instance (biến đối tượng) thuộc về từng đối tượng, mỗi đối tượng sẽ có một bản riêng
+Biến static thường dùng để lưu những giá trị chung cho tất cả các đối tượng
+3.
+String là bất biến (immutable), nghĩa là không thể thay đổi giá trị sau khi đã tạo
+StringBuffer là có thể thay đổi (mutable), cho phép chỉnh sửa nội dung mà không tạo đối tượng mới
+Vì vậy, StringBuffer hiệu quả hơn khi cần thao tác thay đổi chuỗi nhiều lần
+4.
+Trong Java, tham số luôn được truyền theo kiểu pass-by-value (truyền theo giá trị)
+Với kiểu dữ liệu nguyên thủy: giá trị được sao chép
+Với đối tượng: giá trị của tham chiếu được sao chép (hai tham chiếu trỏ cùng một đối tượng)
+5.
+ArrayList linh hoạt hơn mảng vì:
+Có thể tự động thay đổi kích thước khi thêm hoặc xóa phần tử.
+Cung cấp nhiều phương thức tiện ích như add(), remove(), contains(),...
+Do đó phù hợp hơn để quản lý danh sách như giỏ hàng.
+6.
+Phương thức isMatch() dùng để so sánh chuỗi đầu vào với tiêu đề (title) của đối tượng Media.
+Nó giúp tìm kiếm và lọc dữ liệu, thường sử dụng so sánh không phân biệt chữ hoa chữ thường (toLowerCase()).

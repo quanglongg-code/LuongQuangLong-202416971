@@ -1,0 +1,15 @@
+
+AIMS PROJECT - USE CASE DIAGRAM (Lab03)
+
+Actor: User
+
+Use Cases:
+- Create DVD
+- Add DVD to Cart
+- Remove DVD from Cart
+- View Cart
+- Search DVD by ID
+- Search DVD by Title
+- Calculate Total Cost
+- Add DVD to Store
+- Remove DVD from Store

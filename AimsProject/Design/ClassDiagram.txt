@@ -1,0 +1,32 @@
+
+AIMS PROJECT - CLASS DIAGRAM (Lab03)
+
+DigitalVideoDisc
+----------------
+- id : int
+- nbDigitalVideoDiscs : static int
+- title : String
+- category : String
+- director : String
+- length : int
+- cost : float
+
+Cart
+----
+- itemsOrdered[] : DigitalVideoDisc
++ addDigitalVideoDisc(...)
++ removeDigitalVideoDisc(...)
++ totalCost()
++ print()
++ searchById()
++ searchByTitle()
+
+Store
+-----
+- itemsInStore[] : DigitalVideoDisc
++ addDVD()
++ removeDVD()
+
+Relationships:
+Cart --> DigitalVideoDisc (contains)
+Store --> DigitalVideoDisc (contains)
