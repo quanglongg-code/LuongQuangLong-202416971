@@ -1,0 +1,42 @@
+10 - Phương thức equals():
+- Nếu đối tượng truyền vào không phải là instance của Media (hoặc Track), phương thức equals() sẽ trả về false. Sử dụng kiểm tra instanceof trước khi ép kiểu để tránh lỗi ClassCastException.
+
+
+11 - Đa hình với phương thức toString():
+- Khi duyệt qua ArrayList và gọi m.toString(), Java sử dụng cơ chế dynamic dispatch
+- Mặc dù kiểu của biến là Media, kiểu thực tế tại runtime (CompactDisc, DigitalVideoDisc, Book) sẽ quyết định phương thức toString() nào được gọi
+- Đây là đa hình lúc chạy (runtime polymorphism): phương thức toString() được override ở từng lớp con sẽ tự động được gọi, vì vậy kết quả hiển thị sẽ khác nhau tùy theo đối tượng thực tế được lưu trong danh sách
+
+
+12 - Comparable vs Comparator:
+Q: Lớp nào nên implement Comparable interface?
+-> Lớp Media nên implement Comparable.
+
+Q: compareTo() nên được cài đặt như thế nào?
+-> Với cách sắp xếp mặc định (ví dụ: theo title rồi đến cost):
+   @Override
+   public int compareTo(Media other) {
+       int cmp = this.getTitle().compareTo(other.getTitle());
+       if (cmp != 0) return cmp;
+       return Float.compare(other.getCost(), this.getCost()); // higher cost first
+   }
+
+Q: Có thể có hai quy tắc sắp xếp (theo title-cost và theo cost-title) khi dùng Comparable không?
+-> Không. Comparable chỉ hỗ trợ 1 cách sắp xếp tự nhiên duy nhất. Để hỗ trợ nhiều cách sắp xếp khác nhau, cần sử dụng Comparator. Đó là lý do Comparator phù hợp hơn trong trường hợp này.
+
+Q: Giả sử DVD có quy tắc sắp xếp khác (theo title, sau đó length giảm dần, rồi đến cost). Bạn sẽ chỉnh sửa code như thế nào? 
+-> Với Comparator: tạo một lớp riêng DVDComparatorByTitleLengthCost và override phương thức compare(). Sau đó truyền comparator này khi sắp xếp danh sách DVD:
+Collections.sort(dvdList, new DVDComparatorByTitleLengthCost());
+Cách này cho phép linh hoạt theo từng loại đối tượng mà không cần thay đổi class hierarchy.
+Với Comparable: chúng ta cần override compareTo() trong DigitalVideoDisc với logic khác, nhưng mỗi class chỉ có thể có một natural ordering duy nhất. Vì vậy nếu cần nhiều kiểu sắp xếp trong cùng một loại đối tượng, Comparator vẫn là lựa chọn cần thiết.
+
+
+9 - Aggregate classes:
+- Cart aggregates Media objects (ArrayList<Media> itemsOrdered).
+  -> Cart constructor initializes itemsOrdered = new ArrayList<Media>().
+- CompactDisc aggregates Track objects (ArrayList<Track> tracks).
+  -> CompactDisc constructor initializes tracks = new ArrayList<Track>().
+- Store aggregates Media objects (ArrayList<Media> itemsInStore).
+  -> Store constructor initializes itemsInStore = new ArrayList<Media>().
+- Book aggregates author Strings (ArrayList<String> authors).
+  -> Book constructor initializes authors = new ArrayList<String>().
